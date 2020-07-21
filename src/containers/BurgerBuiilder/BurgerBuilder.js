@@ -19,7 +19,7 @@ const INGREDIENT_PRICES = {
 class BurgerBuilder extends Component {
     state = {
         ingredients: null,
-        totalPrice: 4,
+        totalPrice: 5.3,
         purchasable: false,
         purchasing: false,
         loading: false,
@@ -83,30 +83,17 @@ class BurgerBuilder extends Component {
         this.setState({ purchasing: false })
     }
 
-    purchaseContinueHandler = () => {
-        // alert('You continue!');
-        this.setState({ loading: true })
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'Christian Ngubana',
-                address: {
-                    street: 'Testsreet 1',
-                    zipCode: '49283',
-                    country: 'Germany'
-                },
-                email: 'test@gmail.com'
-            },
-            deliveryMethod: 'fastest'
+    checkoutContinuedHandler = () => {
+        const queryParams = [];
+        for (let ing in this.state.ingredients) {
+            queryParams.push(encodeURIComponent(ing) + '=' + encodeURIComponent(this.state.ingredients[ing]));
         }
-        axios.post('https://react-burger-bf04f.firebaseio.com/orders.json', order)
-            .then(respose => {
-                this.setState({ loading: false, purchasing: false });
-            })
-            .catch(error => {
-                this.setState({ loading: false, purchasing: false });
-            })
+        queryParams.push('price=' + this.state.totalPrice.toFixed(2));
+        const queryString = queryParams.join('&');
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString
+        });
     }
     render() {
         const disabledInfo = {
@@ -117,7 +104,7 @@ class BurgerBuilder extends Component {
         }
         let orderSummary = null;
 
-        let burger = this.state.error ? <p style={{textAlign:'center', color:'red'}}>Ingredients cannot be null</p> : <Spinner />
+        let burger = this.state.error ? <p style={{ textAlign: 'center', color: 'red' }}>Ingredients cannot be null</p> : <Spinner />
         if (this.state.ingredients) {
             burger = (
                 <Aux>
@@ -134,7 +121,7 @@ class BurgerBuilder extends Component {
             orderSummary = <OrderSummary ingredients={this.state.ingredients}
                 price={this.state.totalPrice}
                 purchaseCancelledHandler={this.purchaseCancelledHandler}
-                purchaseContinueHandler={this.purchaseContinueHandler}
+                checkoutContinuedHandler={this.checkoutContinuedHandler}
             />
         }
         if (this.state.loading) {
