@@ -14,19 +14,17 @@ const singleOrder = (props) => {
     }
 
     const ingredientOutput = ingredients.map(ig => {
-        return <span 
-        style={{
-            textTransform: 'capitalize',
-            display: 'inline-block',
-            margin: '0 8px',
-            border: '1px solid #ccc',
-            padding: '5px'
-        }}
-           key={ig.name}>{ig.name} ({ig.amount})</span>
+        return <span
+            style={{
+                textTransform: 'capitalize',
+                display: 'inline-block',
+                margin: '0 8px',
+                border: '1px solid #ccc',
+                padding: '5px',
+                backgroundColor: 'yellow'
+            }}
+            key={ig.name}>{ig.name} ({ig.amount})</span>
     });
-
-    console.log(ingredientOutput)
-
     return (
         <div className={classes.SingleOrder}>
             <p>Ingredients: {ingredientOutput}</p>
