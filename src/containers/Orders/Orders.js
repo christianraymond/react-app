@@ -12,7 +12,6 @@ class Orders extends Component {
     componentDidMount() {
         axios.get("https://react-burger-bf04f.firebaseio.com/orders.json")
             .then(res => {
-                console.log(res.data);
                 const fetchedOrders = [];
                 for (let key in res.data) {
                     fetchedOrders.push({

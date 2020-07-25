@@ -88,6 +88,7 @@ class ContactData extends Component {
 
             }
         },
+        formIsValidProperty: false,
         loading: false
     }
 
@@ -141,6 +142,12 @@ class ContactData extends Component {
         updatedFormElement.value = event.target.value;
         updatedFormElement.valid = this.checkForValidation(updatedFormElement.value, updatedFormElement.validation);
         updatedFormElement.touched = true;
+
+        ///Disable SEND ORDER button if input are invalid
+        // const formIsValid = true;
+        // for(let inputIdentifier in updatedOrderForm){
+        //    formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+        // }
         console.log(updatedFormElement);
         updatedOrderForm[inputIdentifier] = updatedFormElement;
         this.setState({ orderForm: updatedOrderForm })

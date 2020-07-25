@@ -1,1 +1,1 @@
-It's importand to let you know that the project description and the read file will be updated soon.
+It's importand to let you know that the project description and the readMe file will be updated soon.

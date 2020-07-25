@@ -5,16 +5,17 @@ import classes from './Inputs.module.css'
 const input = (props) => {
 
     let inputElement = null;
+    let validationError = null;
     const inputClasses = [classes.InputElement];
 
-    if(props.invalid && props.shouldValidate && props.touched){
+    if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid)
     }
 
-    let validationError = null;
-    
-    if(props.invalid && props.touched){
-        validationError = <p>Please enter a valid value</p>
+    if (props.invalid && props.touched) {
+       validationError = <p className={classes.ValidationError}>
+         {props.value} is not valid {props.elementConfig.placeholder}, trye again
+       </p>;
     }
 
     switch (props.elementType) {
@@ -23,7 +24,7 @@ const input = (props) => {
                 className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}
-               onChange={props.changed}
+                onChange={props.changed}
             />;
             break;
         case ('textarea'):
@@ -40,9 +41,9 @@ const input = (props) => {
                     value={props.value}>
                     {props.elementConfig.options.map(option => (
                         <option key={option.value}
-                        value={option.value} onChange={props.changed}>
-                        {option.displayValue}
-                    </option>
+                            value={option.value} onChange={props.changed}>
+                            {option.displayValue}
+                        </option>
                     ))}
                 </select>
             );
@@ -52,7 +53,7 @@ const input = (props) => {
                 className={inputClasses}
                 {...props.elementConfig}
                 value={props.value}
-               
+
             />
     }
     return (
