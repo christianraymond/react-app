@@ -13,8 +13,8 @@ const input = (props) => {
     }
 
     if (props.invalid && props.touched) {
-       validationError = <p className={classes.ValidationError}>
-      {props.elementConfig.placeholder}  {props.value} is not valid, try again
+        validationError = <p className={classes.ValidationError}>
+            {props.elementConfig.placeholder}  {props.value} is not valid, try again
        </p>;
     }
 
@@ -37,8 +37,7 @@ const input = (props) => {
         case ('select'):
             inputElement = (
                 <select
-                    className={inputClasses}
-                    value={props.value}>
+                    className={inputClasses}>
                     {props.elementConfig.options.map(option => (
                         <option key={option.value}
                             value={option.value} onChange={props.changed}>

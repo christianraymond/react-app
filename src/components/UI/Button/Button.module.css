@@ -10,7 +10,6 @@
     font-weight: bold;
 }
 
-.Button.disabled,
 .Button[disabled]{
     color: #ccc;
     cursor: not-allowed

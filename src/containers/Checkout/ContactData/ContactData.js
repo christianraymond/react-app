@@ -85,11 +85,12 @@ class ContactData extends Component {
                     ]
                 },
                 valid: true,
-                value: '',
+                validation: {},
+                value: 'cheapest',
             }
         },
         formIsValid: false,
-        loading: false
+        loading: false,
     }
 
     sendOrderHandler = (e) => {
@@ -116,7 +117,9 @@ class ContactData extends Component {
 
     checkForValidation(value, rules) {
         let isValid = true;
-
+        if (!rules) {
+            return true;
+        }
         if (rules.required) {
             isValid = value.trim() !== '' && isValid;
         }
@@ -130,7 +133,6 @@ class ContactData extends Component {
         }
         return isValid;
     }
-
     InputChangedHandler = (event, inputIdentifier) => {
         console.log(event.target.value);
         const updatedOrderForm = {
@@ -148,10 +150,10 @@ class ContactData extends Component {
         // let validForm = Object.entries(updatedOrderForm).map(elm => elm[1].valid).reduce((val, curr) => val && curr, true)
 
         let formIsValid = true
-        for(let inputIdentifier in updatedOrderForm){
-           formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+        for (let inputIdentifier in updatedOrderForm) {
+            formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
         }
-        this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid})
+        this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid })
         console.log(formIsValid)
     }
     render() {
