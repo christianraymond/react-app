@@ -14,7 +14,7 @@ const input = (props) => {
 
     if (props.invalid && props.touched) {
        validationError = <p className={classes.ValidationError}>
-         {props.value} is not valid {props.elementConfig.placeholder}, trye again
+      {props.elementConfig.placeholder}  {props.value} is not valid, try again
        </p>;
     }
 

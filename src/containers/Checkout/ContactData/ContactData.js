@@ -84,11 +84,11 @@ class ContactData extends Component {
                         { value: 'cheapest', displayValue: 'Cheapest' }
                     ]
                 },
+                valid: true,
                 value: '',
-
             }
         },
-        formIsValidProperty: false,
+        formIsValid: false,
         loading: false
     }
 
@@ -142,16 +142,17 @@ class ContactData extends Component {
         updatedFormElement.value = event.target.value;
         updatedFormElement.valid = this.checkForValidation(updatedFormElement.value, updatedFormElement.validation);
         updatedFormElement.touched = true;
+        updatedOrderForm[inputIdentifier] = updatedFormElement;
 
         ///Disable SEND ORDER button if input are invalid
-        // const formIsValid = true;
-        // for(let inputIdentifier in updatedOrderForm){
-        //    formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
-        // }
-        console.log(updatedFormElement);
-        updatedOrderForm[inputIdentifier] = updatedFormElement;
-        this.setState({ orderForm: updatedOrderForm })
+        // let validForm = Object.entries(updatedOrderForm).map(elm => elm[1].valid).reduce((val, curr) => val && curr, true)
 
+        let formIsValid = true
+        for(let inputIdentifier in updatedOrderForm){
+           formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+        }
+        this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid})
+        console.log(formIsValid)
     }
     render() {
         const formElementArray = [];
@@ -177,7 +178,7 @@ class ContactData extends Component {
                         />
                     )
                 })}
-                <Button btnType='Success'>SEND ORDER</Button>
+                <Button btnType='Success' disabled={!this.state.formIsValid}>SUBMIT ORDER</Button>
             </form>
         );
         if (this.state.loading) {
