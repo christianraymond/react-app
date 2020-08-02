@@ -10,16 +10,16 @@ import axios from 'axios';
 
 
 const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.4,
-    meat: 1.3,
-    bacon: 0.7
+    salad: 3.70,
+    cheese: 1.50,
+    meat: 5,
+    bacon: 2
 };
 
 class BurgerBuilder extends Component {
     state = {
         ingredients: null,
-        totalPrice: 5.3,
+        totalPrice:4.70,
         purchasable: false,
         purchasing: false,
         loading: false,
