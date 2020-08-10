@@ -30,13 +30,13 @@ const singleOrder = (props) => {
         <div className={classes.SingleOrder}>
             <p>Ingredients: {ingredientOutput}</p>
             <p>Price: <strong>R{Number.parseFloat(props.price).toFixed(2)}</strong></p>
-            <strong style={{color:'orange'}}>Customer details</strong>
+            {/* <strong style={{color:'orange'}}>Customer details</strong>
             <p>Name: {props.customer.name}</p>
             <p>Country: {props.customer.country}</p>
             <p>Street: {props.customer.street}</p>
             <p>ZIP-Code: {props.customer.zipCode}</p>
             <p>Email: {props.customer.email}</p>
-            <p>D-Method: {props.customer.deliveryMethod}</p>
+            <p>D-Method: {props.customer.deliveryMethod}</p>  */}
         </div>
     )
 }

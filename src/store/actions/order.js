@@ -25,11 +25,10 @@ export const purchaseBurgerStart = () => {
   }
 }
 
-
-export const purchaseBurger = (orderData) => {
+export const purchaseBurger = (orderData, token) => {
     return dispatch => {
         dispatch(purchaseBurgerStart());
-        axios.post('https://react-burger-bf04f.firebaseio.com/orders.json', orderData)
+        axios.post('https://react-burger-bf04f.firebaseio.com/orders.json?auth=' + token, orderData)
             .then(respose => {
                 console.log(respose.data)
                 dispatch(purchaseBurgerSuccess(respose.data.name, orderData))
@@ -46,14 +45,12 @@ export const onInitPurchase = () => {
     }
 };
 
-
 export const fetchOderSuccess = (orders) => {
     return{
         type: actionTypes.FETCH_ORDER_SUCCESS,
         orders: orders
     }
 }
-
 
 export const fetchOderFailed = (error) => {
     return{
@@ -68,10 +65,11 @@ export const fetchOrderStart = () => {
     }
 }
 
-export const fetchOders = () => {
+export const fetchOders = (token, userId) => {
     return dispatch => {
         dispatch(fetchOrderStart())
-        axios.get("https://react-burger-bf04f.firebaseio.com/orders.json")
+        const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+        axios.get("https://react-burger-bf04f.firebaseio.com/orders.json" + queryParams)
         .then(res => {
             const fetchedOrders = [];
             for (let key in res.data) {
