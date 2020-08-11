@@ -39,20 +39,20 @@ class Aux extends Component {
                 valid: false,
                 touched: false
             },
-            confirmPassword: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'password',
-                    placeholder: 'Confirm password'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    minLength: 7,
-                },
-                valid: false,
-                touched: false
-            }
+            // confirmPassword: {
+            //     elementType: 'input',
+            //     elementConfig: {
+            //         type: 'password',
+            //         placeholder: 'Confirm password'
+            //     },
+            //     value: '',
+            //     validation: {
+            //         required: true,
+            //         minLength: 7,
+            //     },
+            //     valid: false,
+            //     touched: false
+            // }
         },
         isRegister: false
     }
@@ -120,11 +120,7 @@ class Aux extends Component {
 
     submitHandler = (event) => {
         event.preventDefault();
-        if (this.state.controls.password.value !== this.state.controls.confirmPassword.value) {
-            alert("Password donn't match!")
-        } else {
-            this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isRegister);
-        }
+        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isRegister);
     }
     render() {
         const formElementArray = [];
@@ -173,10 +169,10 @@ class Aux extends Component {
                     {form}
                     <Button btnType='Success'>Submit</Button>
                 </form>
-                <p>Already have an account?, please</p>
+                <p>Already or don't have an account?, please</p>
                 <Button
                     clicked={this.switchAuthHandler}
-                    btnType="Default">{this.state.isRegister ? 'Register' : 'Login'}</Button>
+                    btnType="Default">Switch to {this.state.isRegister ? 'Register' : 'Login'}</Button>
             </div>
         );
     }

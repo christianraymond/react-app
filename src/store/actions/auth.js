@@ -53,18 +53,20 @@ export const auth = (email, password, isRegister) => {
         }
         axios.post(url, authData)
             .then(response => {
+                console.log(response);
+                const expirationTime = new Date(new Date().getTime() + response.data.expiresIn * 1000);
+                localStorage.setItem('token', response.data.idToken);
+                localStorage.setItem('expirationTime', expirationTime);
+                localStorage.setItem('userId', response.data.localId);
+                dispatch(authSuccess(response.data.idToken, response.data.localId));
+                dispatch(checkAuthTimeOut(response.data.expiresIn))
                 try {
-                    console.log(response);
-                    const expirationTime = new Date(new Date().getTime() + response.data.expiresIn * 1000);
-                    localStorage.setItem('token', response.data.idToken);
-                    localStorage.setItem('expirationTime', expirationTime);
-                    localStorage.setItem('userId', response.data.localId);
-                    dispatch(authSuccess(response.data.idToken, response.data.localId));
-                    dispatch(checkAuthTimeOut(response.data.expiresIn))
+                    dispatch(authFail(response.data.error))
+                    console.log(response)
                 } catch (error) {
-                    console.log(error);
                     dispatch(authFail(error.response.data.error))
                     console.log(error.response)
+                    console.log(error);
                 }
             })
             .catch(error => {
@@ -72,7 +74,7 @@ export const auth = (email, password, isRegister) => {
                 console.log(error.response)
                 console.log(error);
             })
-            
+
     }
 }
 
