@@ -1,0 +1,87 @@
+.SiteFooter
+{
+  background-color:#26272b;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  color: rgba(255, 255, 255, 0.482);
+  text-align: center;
+  position: relative;
+  top: 500px;
+}
+.SiteFooter a
+{
+  color:#737373;
+  text-decoration: none;
+  color: #b9c4ca;
+}
+.FooterLink a:active,.FooterLink a:focus,.FooterLink a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.FooterLink.inline li
+{
+  display:inline-block
+}
+
+.SiteFooter .SocialIcons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+
+.SocialIcons
+{
+  padding-left:0;
+  margin-bottom:0;
+  list-style:none
+}
+.SocialIcons li
+{
+  display:inline-block;
+  margin-bottom: auto;
+}
+.SocialIcons a{
+  background-color:#eceeef;
+  color:#818a91;
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  margin-right:8px;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.SocialIcons a:active,.SocialIcons a:focus,.SocialIcons a:hover
+{
+  color:#fff;
+  background-color:#29aafe
+}
+
+.SocialIcons a.GitHub:hover
+{
+  background-color:#007bb6
+}
+.SocialIcons a.Twitter:hover
+{
+  background-color:#00aced
+}
+.SocialIcons a.Linkedin:hover
+{
+  background-color:#007bb6
+}
+.SocialIcons a.dribbble:hover
+{
+  background-color:#ea4c89
+}

@@ -38,20 +38,20 @@ class Register extends Component {
                 valid: false,
                 touched: false
             },
-            confirmPassword: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'password',
-                    placeholder: 'Confirm password'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    minLength: 7,
-                },
-                valid: false,
-                touched: false
-            }
+            // confirmPassword: {
+            //     elementType: 'input',
+            //     elementConfig: {
+            //         type: 'password',
+            //         placeholder: 'Confirm password'
+            //     },
+            //     value: '',
+            //     validation: {
+            //         required: true,
+            //         minLength: 7,
+            //     },
+            //     valid: false,
+            //     touched: false
+            // }
         },
         isRegister: true
     }

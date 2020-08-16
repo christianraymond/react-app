@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './App';
+import Footer from './components/Footer/Footer';
 import * as serviceWorker from './serviceWorker';
 import burgerBuilderReducer from './store/reducer/burgerBuilder';
 import orderReducer from './store/reducer/order2';
@@ -28,6 +29,7 @@ const app = (
     <BrowserRouter>
       <React.StrictMode>
         <App />
+        <Footer/>
       </React.StrictMode>
     </BrowserRouter>
   </Provider>

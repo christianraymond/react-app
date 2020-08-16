@@ -31,7 +31,7 @@ const singleOrder = (props) => {
             <p>Ingredients: {ingredientOutput}</p>
             <p>Price: <strong>R{Number.parseFloat(props.price).toFixed(2)}</strong></p>
             <strong style={{color:'orange'}}>Your</strong>
-            {/* <p>Name: {props.customer.name}</p> */}
+            <p>Name: {props.customer.name}</p>
             <p>Country: {props.customer.country}</p>
             <p>Street: {props.customer.street}</p>
             <p>ZipCode: {props.customer.zipCode}</p>
