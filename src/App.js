@@ -9,14 +9,11 @@ import Orders from './containers/Orders/Orders';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import * as actions from './store/actions/index';
-
-
 class App extends Component {
   componentDidMount() {
     this.props.onTryAutoRegister()
   }
   render() {
-
     let routes = (
       <Switch>
         <Route path="/login" component={Auth} />
@@ -24,7 +21,6 @@ class App extends Component {
         <Redirect to="/"/>
       </Switch>
     )
-
     if (this.props.isAuthenticated) {
       routes = (
         <Switch>
@@ -46,8 +42,6 @@ class App extends Component {
     )
   }
 }
-
-
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.token !== null

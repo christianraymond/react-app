@@ -7,7 +7,6 @@ import Input from '../../../components/UI/Inputs/Inputs';
 import axios from 'axios';
 import withErrorHandler from '../../../hoc/WithErrorHandler/WithErrorHandler';
 import * as actions from '../../../store/actions/index'
-
 class ContactData extends Component {
     state = {
         orderForm: {
