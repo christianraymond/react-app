@@ -5,7 +5,6 @@ import axios from 'axios';
 import withErrorHandler from '../../hoc/WithErrorHandler/WithErrorHandler';
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner'
-
 class Orders extends Component {
 
     componentDidMount() {
@@ -31,7 +30,6 @@ class Orders extends Component {
         );
     }
 }
-
 const mapStateToProps = state => {
     return {
         orders: state.orders.orders,
@@ -40,7 +38,6 @@ const mapStateToProps = state => {
         userId: state.auth.userId
     }
 }
-
 const mapDispatchToProps = dispatch => {
     return {
         onFetchOrder: (token, userId) => dispatch(actions.fetchOders(token, userId))

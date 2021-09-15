@@ -6,8 +6,6 @@ import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './Auth.module.css';
 import * as actions from '../../store/actions/index'
-
-
 class Aux extends Component {
     state = {
         controls: {
@@ -39,30 +37,14 @@ class Aux extends Component {
                 valid: false,
                 touched: false
             },
-            // confirmPassword: {
-            //     elementType: 'input',
-            //     elementConfig: {
-            //         type: 'password',
-            //         placeholder: 'Confirm password'
-            //     },
-            //     value: '',
-            //     validation: {
-            //         required: true,
-            //         minLength: 7,
-            //     },
-            //     valid: false,
-            //     touched: false
-            // }
         },
         isRegister: false
     }
-
     componentDidMount() {
         if (!this.props.buildingBurger && this.props.authRedirectPath !== '/') {
             this.props.onSetAuthRedirectPath()
         }
     }
-
     checkForValidation(value, rules) {
         let isValid = true;
         if (!rules) {
@@ -91,7 +73,6 @@ class Aux extends Component {
         }
         return isValid;
     }
-
     inputChangeHandler = (event, controlName) => {
         const updatedControls = {
             ...this.state.controls,
@@ -104,20 +85,17 @@ class Aux extends Component {
         };
         this.setState({ controls: updatedControls });
     }
-
     switchAuthHandler = () => {
         this.setState(preveState => {
             return { isRegister: !preveState.isRegister }
         })
     }
-
     handleConfirmPassword = (event) => {
         if (event.target.value !== this.state.controls.confirmPassword) {
             alert('error');
             this.setState({ confirmPassword: event.target.value })
         }
     }
-
     submitHandler = (event) => {
         event.preventDefault();
         this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isRegister);
@@ -177,7 +155,6 @@ class Aux extends Component {
         );
     }
 }
-
 const mapStateToProps = state => {
     return {
         loading: state.auth.loading,

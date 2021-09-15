@@ -6,7 +6,6 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './Auth.module.css';
 import * as actions from '../../store/actions/index'
 import { connect } from 'react-redux';
-
 class Register extends Component {
     state = {
         controls: {
@@ -38,20 +37,6 @@ class Register extends Component {
                 valid: false,
                 touched: false
             },
-            // confirmPassword: {
-            //     elementType: 'input',
-            //     elementConfig: {
-            //         type: 'password',
-            //         placeholder: 'Confirm password'
-            //     },
-            //     value: '',
-            //     validation: {
-            //         required: true,
-            //         minLength: 7,
-            //     },
-            //     valid: false,
-            //     touched: false
-            // }
         },
         isRegister: true
     }
